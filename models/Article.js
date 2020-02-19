@@ -11,12 +11,18 @@ const ArticleSchema = new Schema({
         trim: true,
         required: "Headline is required"
     },
-    summary: {
-        type: String
-    },
     link: {
         type: String,
         required: true
+    },
+    summary: {
+        type: String
+    },
+    byline: {
+        type: String
+    },
+    image: {
+        type: String,
     },
     // `note` is an object that stores a Note id
     // The ref property links the ObjectId to the Note model

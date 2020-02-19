@@ -7,7 +7,7 @@ const router = express.Router();
 const axios = require("axios");
 const cheerio = require("cheerio");
 
-router.get("/scrape", function (res, req) {
+router.get("/scrape", function (req, res) {
     axios.get("https://www.washingtonpost.com/").then(function (response) {
         // Then, we load that into cheerio and save it to $ for a shorthand selector
         const $ = cheerio.load(response.data);
@@ -19,12 +19,11 @@ router.get("/scrape", function (res, req) {
             const desc = $(element).next().find(".blurb").text();
             const byline = $(element).next().find(".byline").text();
             const image = $(element).parent().parent().find(".photo-wrapper").children("a").children("img").attr('data-low-res-src');
-            //console.log($(element).parent().parent().find(".photo-wrapper").children("a").children("img").attr('src'));
             if (title && link) {
                 result.push({
-                    title: title,
+                    headline: title,
                     link: link,
-                    desc: desc,
+                    summary: desc,
                     byline: byline,
                     image: image
                 });
@@ -32,12 +31,17 @@ router.get("/scrape", function (res, req) {
         });
 
         if (result) {
-            console.log(result);
-            //res.json(result);
+            db.Article.insertMany(result, { ordered: false }).then(function (dbArticle) {
+                // View the added result in the console
+                console.log(dbArticle);
+            })
+                .catch(function (err) {
+                    // If an error occurred, log it
+                    console.log(err);
+                });
         }
 
-
-        //res.send('Birds home page')
+        res.send("Scrape Complete");
     });
 });
 
