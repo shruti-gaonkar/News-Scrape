@@ -33,7 +33,7 @@ router.get("/scrape", function (req, res) {
         if (result) {
             db.Article.insertMany(result, { ordered: false }).then(function (dbArticle) {
                 // View the added result in the console
-                console.log(dbArticle);
+                //console.log(dbArticle);
             })
                 .catch(function (err) {
                     // If an error occurred, log it
@@ -43,6 +43,14 @@ router.get("/scrape", function (req, res) {
 
         res.send("Scrape Complete");
     });
+});
+
+
+// delete the articles
+router.delete("/api/delete/articles", function (req, res) {
+    db.Article.deleteMany()
+        .then(result => console.log(`Deleted ${result.deletedCount} item(s).`))
+        .catch(err => console.error(`Delete failed with error: ${err}`))
 });
 
 module.exports = router;
