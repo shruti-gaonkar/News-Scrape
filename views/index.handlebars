@@ -1,7 +1,16 @@
 <div class="row">
     <div class="col s12">
-        <p>
-            testing
-        </p>
+
+
+        {{#each contents}}
+
+
+        <li>
+            Headline:<a href="{{this.link}}">{{this.headline}}</a><br />
+            Summary:{{this.summary}}<br />
+            Byline:{{this.byline}}<br />
+            Image:<img src="{{this.image}}" width="112">
+        </li>
+        {{/each}}
     </div>
 </div>

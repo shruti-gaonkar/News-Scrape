@@ -3,18 +3,32 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", function (req, res) {
-    return res.render("index");
+    /*db.Article.find({}).then(function (dbArticle) {
+        //console.log(dbArticle);
+        res.render("index", {
+            contents: dbArticle
+        });
+        //res.json(dbArticle)
+    }).catch(function (err) {
+        // If an error occurred, send it to the client
+        res.json(err);
+    });*/
+    db.Article.find({}).lean().exec(function (err, dbArticle) {
+        res.render("index", {
+            contents: dbArticle
+        });
+    });
 });
 
-router.get("/articles", function (req, res) {
+/*router.get("/articles", function (req, res) {
     db.Article.find({}).then(function (dbArticle) {
-        console.log(dbArticle);
-        return res.render("index", { data: dbArticle });
+        //console.log(dbArticle);
+        res.render("index", { dbArticle: dbArticle });
     }).catch(function (err) {
         // If an error occurred, send it to the client
         res.json(err);
     });
-});
+});*/
 
 router.get("/note", function (req, res) {
     res.render("note");

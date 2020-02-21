@@ -12,6 +12,10 @@ function getArticles() {
     });
 }
 
+//$.getJSON("/articles", function (data) {
+
+//});
+
 
 function clearArticles() {
     $.ajax({
