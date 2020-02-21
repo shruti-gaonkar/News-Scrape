@@ -45,6 +45,29 @@ router.get("/scrape", function (req, res) {
     });
 });
 
+router.put("/api/update/articles", function (req, res) {
+    console.log(req.body);
+    db.Article.findOneAndUpdate(
+        // the id of the item to find
+        { _id: req.body._id },
+
+        // the change to be made. Mongoose will smartly combine your existing 
+        // document with this change, which allows for partial updates too
+        { $set: { saved: req.body.saved } },
+
+        // an option that asks mongoose to return the updated version 
+        // of the document instead of the pre-updated one.
+        { new: true },
+
+        // the callback function
+        (err, doc) => {
+            // Handle any possible database errors
+            if (err) return res.status(500).send(err);
+            return res.send(doc);
+        }
+    )
+});
+
 
 // delete the articles
 router.delete("/api/delete/articles", function (req, res) {

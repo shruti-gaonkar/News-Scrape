@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", function (req, res) {
-    /*db.Article.find({}).then(function (dbArticle) {
+    /*db.Article.find({},{ lean: false }).then(function (dbArticle) {
         //console.log(dbArticle);
         res.render("index", {
             contents: dbArticle
@@ -14,6 +14,7 @@ router.get("/", function (req, res) {
         res.json(err);
     });*/
     db.Article.find({}).lean().exec(function (err, dbArticle) {
+        if (err) throw err;
         res.render("index", {
             contents: dbArticle
         });
@@ -30,8 +31,6 @@ router.get("/", function (req, res) {
     });
 });*/
 
-router.get("/note", function (req, res) {
-    res.render("note");
-});
+
 
 module.exports = router;

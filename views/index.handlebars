@@ -5,12 +5,13 @@
         {{#each contents}}
 
 
-        <li>
-            Headline:<a href="{{this.link}}">{{this.headline}}</a><br />
+        <div id="news_{{this._id}}"">
+            Headline:<a href=" {{this.link}}">{{this.headline}}</a><br />
+            <a class="waves-effect waves-light btn" id="btn_save_article" data-id="{{this._id}}">SAVE ARTICLE</a>
             Summary:{{this.summary}}<br />
             Byline:{{this.byline}}<br />
             Image:<img src="{{this.image}}" width="112">
-        </li>
+        </div>
         {{/each}}
     </div>
 </div>
