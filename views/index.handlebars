@@ -8,10 +8,22 @@
         <div id="news_{{this._id}}"">
             Headline:<a href=" {{this.link}}">{{this.headline}}</a><br />
             <a class="waves-effect waves-light btn" id="btn_save_article" data-id="{{this._id}}">SAVE ARTICLE</a>
+            <a class="waves-effect waves-light btn orange modal-trigger" data-id="{{this._id}}" data-toggle="modal"
+                data-target="notemodal">ARTICLE
+                NOTES</a>
+
             Summary:{{this.summary}}<br />
             Byline:{{this.byline}}<br />
             Image:<img src="{{this.image}}" width="112">
         </div>
         {{/each}}
     </div>
+
+    <div id="notemodal" class="modal">
+        <div class="modal-content">
+            {{> note/note-block}}
+        </div>
+    </div>
+
+
 </div>

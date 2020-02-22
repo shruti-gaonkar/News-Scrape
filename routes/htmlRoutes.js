@@ -13,7 +13,7 @@ router.get("/", function (req, res) {
         // If an error occurred, send it to the client
         res.json(err);
     });*/
-    db.Article.find({}).lean().exec(function (err, dbArticle) {
+    db.Article.find({ "saved": false }).lean().exec(function (err, dbArticle) {
         if (err) throw err;
         res.render("index", {
             contents: dbArticle

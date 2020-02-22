@@ -5,12 +5,9 @@ const Schema = mongoose.Schema;
 
 // Using the Schema constructor, create a new NoteSchema object
 const NoteSchema = new Schema({
-    title: {
-        type: String,
-        required: "Please enter a title"
-    },
     body: {
-        type: String
+        type: String,
+        required: "Please enter a note"
     }
 });
 

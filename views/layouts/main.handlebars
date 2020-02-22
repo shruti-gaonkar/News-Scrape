@@ -14,14 +14,12 @@
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
     <!--Import materialize.css-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="/styles/styles.css">
 
@@ -41,81 +39,16 @@
                             <li><a href="/">Home</a></li>
                             <a class="waves-effect waves-light btn" id="btn_scrape">SCRAPE NEW ARTICLES!</a>
                             <a class="waves-effect waves-light btn" id="btn_clear">CLEAR ARTICLES!</a>
-                            <!--li><a class="modal-trigger" href="#signupmodal">Sign Up</a></li>
-                            <li><a class="modal-trigger" href="#loginmodal">Login</a></li-->
-
+                            <a class="waves-effect waves-light btn" id="btn_show_saved_articles">SAVED ARTICLES</a>
                         </ul>
-                        <div class="right">
-                            <a href="#" data-target="slide-out" class="sidenav-trigger"><i
-                                    class="material-icons">menu</i></a>
-                        </div>
                     </div>
             </nav>
         </div>
-        <ul id="dropdown1" class="dropdown-content">
-            <li><a href="/profile">Profile</a></li>
-            <li><a href="/game">Current Game(s)</a></li>
-            <li><a href="/start">Start New Game</a></li>
-            <li class="divider"></li>
-            <li><a href="/logout">Logout</a></li>
-        </ul>
-
-        <ul id="slide-out" class="sidenav">
-            {{#if loggedIn}}
-            <li>
-                <div class="user-view">
-                    <div class="background">
-                        <img src="/images/stardust.png">
-                    </div>
-                    <a href="#user"><img class="circle" src="/images/loginicon.png"></a>
-                    <a href="#name"><span class="white-text name">{{name}}</span></a>
-                    <a href="#email"><span class="white-text email">{{email}}</span></a>
-                </div>
-            </li>
-            <li>
-                <div class="center">{{msg}}</div>
-            </li>
-            <li><a href="/profile">Profile</a></li>
-            <li><a href="/game">Current Game(s)</a></li>
-            <li><a href="/start">Start New Game</a></li>
-            <li class="divider"></li>
-            <li><a href="/logout">Logout</a></li>
-            {{else}}
-            <li>
-                <div class="user-view">
-                    <div class="background">
-                        <img src="/images/stardust.png">
-                    </div>
-                    <a href="#user"><img class="circle" src="/images/loginicon.png"></a>
-                    <a href="#name"><span class="white-text name">One Good Knight</span></a>
-                    <a href="#email"><span class="white-text email">Login to play!</span></a>
-                </div>
-            </li>
-            <li><a href="/"><i class="material-icons">home</i> Home</a></li>
-            <div class="divider"></div>
-            <li><a class="modal-trigger" href="#signupmodal"><i class="material-icons">assignment_ind</i> Sign Up</a>
-            </li>
-            <li><a class="modal-trigger" href="#loginmodal"><i class="material-icons">account_circle</i> Login</a></li>
-            {{/if}}
-        </ul>
     </header>
 
     <main>
         <div class="container body-container">
-            <!--div id="loginmodal" class="modal">
-                <div class="modal-content">
-                    
-                </div>
-            </div>
-
-            <div id="signupmodal" class="modal">
-                <div class="modal-content">
-                    
-                </div>
-            </div-->
-
             {{{body}}}
-
         </div>
     </main>
 
@@ -134,7 +67,6 @@
             </div>
         </div>
     </footer>
-
     <script type="text/javascript" src="/js/app.js"></script>
 </body>
 
