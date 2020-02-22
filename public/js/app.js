@@ -32,9 +32,6 @@ function getArticles() {
     });
 }
 
-//$.getJSON("/articles", function (data) {
-
-//});
 function saveArticle() {
     const id = $(this).attr('data-id');
     //console.log(id);
@@ -77,5 +74,6 @@ function clearArticles() {
         .then(function () {
             //window.location.reload();
             console.log("Deleted Successfully");
+            $("#article_content_id").empty();
         });
 }

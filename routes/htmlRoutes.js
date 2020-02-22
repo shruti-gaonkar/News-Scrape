@@ -21,6 +21,15 @@ router.get("/", function (req, res) {
     });
 });
 
+router.get("/saved", function (req, res) {
+    db.Article.find({ "saved": true }).lean().exec(function (err, dbArticle) {
+        if (err) throw err;
+        res.render("index", {
+            contents: dbArticle
+        });
+    });
+});
+
 /*router.get("/api/articles/:id", function (req, res) {
     db.Article.find({ "_id": req.params.id }).lean().exec(function (err, dbNote) {
         if (err) throw err;
