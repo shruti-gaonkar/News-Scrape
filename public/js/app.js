@@ -1,7 +1,16 @@
 $(document).ready(function () {
     $('.modal').modal({
         onOpenStart: function (modal, trigger) {
-            $(modal).find('#article_id').val($(trigger).data('id'))
+            $(modal).find('#article_id').val($(trigger).data('id'));
+            $(modal).find('#Note').val('');
+
+            $.getJSON("/api/articles/" + $(trigger).data('id'), function (data) {
+                let newDiv = $("<div>");
+                $.each(data[0].note, function (i, val) {
+                    newDiv.append("<li class='collection-item'>" + val.body + "</li>");
+                });
+                $(modal).find('#note_list').html(newDiv);
+            });
         }
     });
 });
