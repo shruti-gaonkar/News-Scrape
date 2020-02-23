@@ -3,7 +3,7 @@ body {
     min-height: 100vh;
     flex-direction: column;
     font-size: 16px;
-    background-color: #232323;
+    background-image: url("../images/dark_brick_wall.png");
   }
   
   main {
@@ -54,30 +54,6 @@ body {
   
   .story-divider {
     margin-top: 50px;
-  }
-  
-  .gameheader {
-    margin-bottom: -3px;
-    word-wrap: break-word;
-  }
-  
-  .gamerow {
-    background-repeat: no-repeat; 
-    background-position: left-top;
-  }
-  
-  .gameoffset {
-    margin-left: 65px;
-    width: 90%;
-  }
-  
-  .gamecards {
-    background-color: aquamarine;
-  }
-  
-  [type="radio"]:not(:checked) + span,
-  [type="radio"]:checked + span {
-    font-size: 2rem;
   }
 
   .page-footer {
