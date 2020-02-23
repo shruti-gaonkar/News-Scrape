@@ -24,7 +24,7 @@ $(document).ready(function () {
 });
 
 $(document).on("click", ".scrape-new", getArticles);
-$(document).on("click", "#clear-articles", clearArticles);
+$(document).on("click", ".clear-articles", clearArticles);
 $(document).on("click", ".btn_save_article", saveArticle);
 $(document).on("click", "#btn_save_note", saveNote);
 
