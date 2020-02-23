@@ -15,7 +15,7 @@ $(document).ready(function () {
     });
 });
 
-$(document).on("click", "#btn_scrape", getArticles);
+$(document).on("click", ".scrape-new", getArticles);
 $(document).on("click", "#btn_clear", clearArticles);
 $(document).on("click", "#btn_save_article", saveArticle);
 $(document).on("click", "#btn_save_note", saveNote);
@@ -71,9 +71,9 @@ function clearArticles() {
         method: "DELETE",
         url: "/api/delete/articles"
     })
-        .then(function () {
+        .then(function (data) {
             //window.location.reload();
-            console.log("Deleted Successfully");
-            $("#article_content_id").empty();
+            $("#article_container").empty();
+            $("#no_article_container").show();
         });
 }

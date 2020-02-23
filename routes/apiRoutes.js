@@ -89,8 +89,14 @@ router.post("/api/articles/:id", function (req, res) {
 // delete the articles
 router.delete("/api/delete/articles", function (req, res) {
     db.Article.deleteMany()
-        .then(result => console.log(`Deleted ${result.deletedCount} item(s).`))
-        .catch(err => console.error(`Delete failed with error: ${err}`))
+        .then(function (dbArticle) {
+            // If we were able to successfully update an Article, send it back to the client
+            res.json(dbArticle);
+        })
+        .catch(function (err) {
+            // If an error occurred, send it to the client
+            res.json(err);
+        });
 });
 
 module.exports = router;
