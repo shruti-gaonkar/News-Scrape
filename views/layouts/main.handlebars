@@ -30,10 +30,13 @@
                             Scraper</a>
                         <ul id="nav-mobile" class="right hide-on-med-and-down">
                             <li><a href="/">Home</a></li>
-                            <a class="waves-effect waves-light btn scrape-new">SCRAPE NEW ARTICLES!</a>
-                            <a href="/saved" class="waves-effect waves-light btn" id="btn_show_saved_articles">SAVED
+                            {{#unless saved}}
+                            <a class="waves-effect waves-light btn scrape-new green">SCRAPE NEW ARTICLES!</a>
+                            {{/unless}}
+                            <a href="/saved" class="waves-effect waves-light btn green"
+                                id="btn_show_saved_articles">SAVED
                                 ARTICLES</a>
-                            <a class="waves-effect waves-light btn clear-articles">CLEAR ARTICLES!</a>
+                            <a class="waves-effect waves-light btn clear-articles red">CLEAR ARTICLES!</a>
                         </ul>
                         <div class="right">
                             <a href="#" data-target="slide-out" class="sidenav-trigger"><i
