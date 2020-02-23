@@ -25,7 +25,8 @@ router.get("/saved", function (req, res) {
     db.Article.find({ "saved": true }).lean().exec(function (err, dbArticle) {
         if (err) throw err;
         res.render("index", {
-            contents: dbArticle
+            contents: dbArticle,
+            saved: true
         });
     });
 });

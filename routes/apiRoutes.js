@@ -33,15 +33,15 @@ router.get("/scrape", function (req, res) {
         if (result) {
             db.Article.insertMany(result, { ordered: false }).then(function (dbArticle) {
                 // View the added result in the console
-                //console.log(dbArticle);
+                res.send(dbArticle);
             })
                 .catch(function (err) {
                     // If an error occurred, log it
-                    console.log(err);
+                    res.json(err);
                 });
         }
 
-        res.send("Scrape Complete");
+        //res.send("Scrape Complete");
     });
 });
 

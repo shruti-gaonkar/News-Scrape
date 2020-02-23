@@ -20,21 +20,16 @@ $(document).on("click", "#btn_clear", clearArticles);
 $(document).on("click", "#btn_save_article", saveArticle);
 $(document).on("click", "#btn_save_note", saveNote);
 
-
 // Grab the articles as a json
 function getArticles() {
     $.getJSON("/scrape", function (data) {
-        console.log(data);
     }).then(function () {
-        $.getJSON("/", function (data) {
-
-        });
+        window.location.reload();
     });
 }
 
 function saveArticle() {
     const id = $(this).attr('data-id');
-    //console.log(id);
     $.ajax({
         method: "PUT",
         url: "/api/update/articles",
@@ -44,26 +39,28 @@ function saveArticle() {
         }
     })
         .then(function () {
-            //window.location.reload();
-            console.log("Updated Successfully");
             $("#news_" + id).remove();
         });
 }
 
 function saveNote() {
     const id = $("#article_id").val();
-    //console.log(id);
-    $.ajax({
-        method: "POST",
-        url: "/api/articles/" + id,
-        data: {
-            body: $("#Note").val()
-        }
-    })
-        .then(function () {
-            //window.location.reload();
-            console.log("Note created Successfully");
-        });
+    const note = $("#Note").val();
+    if (note) {
+        $.ajax({
+            method: "POST",
+            url: "/api/articles/" + id,
+            data: {
+                body: $("#Note").val()
+            }
+        })
+            .then(function () {
+                $('#notemodal').modal('close');
+            });
+    } else {
+        $(".error-msg").text("Please enter a note");
+    }
+
 }
 
 function clearArticles() {
@@ -72,7 +69,6 @@ function clearArticles() {
         url: "/api/delete/articles"
     })
         .then(function (data) {
-            //window.location.reload();
             $("#article_container").empty();
             $("#no_article_container").show();
         });
