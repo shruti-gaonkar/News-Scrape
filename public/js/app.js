@@ -4,13 +4,19 @@ $(document).ready(function () {
     $('.modal').modal({
         onOpenStart: function (modal, trigger) {
             $(modal).find('#article_id').val($(trigger).data('id'));
+            $(modal).find('#article_title').text("Notes for article: " + $(trigger).data('headline'));
             $(modal).find('#Note').val('');
 
             $.getJSON("/api/articles/" + $(trigger).data('id'), function (data) {
                 let newDiv = $("<div>");
-                $.each(data[0].note, function (i, val) {
-                    newDiv.append("<li class='collection-item'>" + val.body + "</li>");
-                });
+                if (data[0].note.length > 0) {
+                    $.each(data[0].note, function (i, val) {
+                        newDiv.append("<li class='collection-item'>" + val.body + "</li>");
+                    });
+                } else {
+                    newDiv.append("<li class='collection-item'>No notes for this article yet.</li>");
+                }
+
                 $(modal).find('#note_list').html(newDiv);
             });
         }
