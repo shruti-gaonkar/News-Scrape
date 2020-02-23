@@ -5,7 +5,7 @@
 * [`News Scraper`](server.js)
 
 ### Technologies
-MySQL, Node, Express, Handlebars, MongoDB. It follows a MVC design pattern; Node and MongoDB to query and route data in the app, and Handlebars to generate the HTML.
+Node, Express, Handlebars, MongoDB. It follows a MVC design pattern; Node and MongoDB to query and route data in the app, and Handlebars to generate the HTML.
 
 NPM packages used:
    1. express
@@ -39,9 +39,9 @@ News Scraper! a web app that lets users view and leave comments on the latest ne
 
      * URL - the url to the original article
 
-     * Image - the image if it exists for the post
+     * Image - the image if it exists for the article
 
-     * Byline - author of each post if it exists
+     * Byline - author of each article if it exists
 
 * Each scraped article has a Save button to save it to the application database.     
 
