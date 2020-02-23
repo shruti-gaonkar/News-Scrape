@@ -2,60 +2,83 @@
     <div id="article_container" class="col s12">
         {{#each contents}}
         <div id="news_{{this._id}}"">
-            Headline:<a href=" {{this.link}}">{{this.headline}}</a><br />
-            {{#if saved}}
-            <a class="waves-effect waves-light btn orange modal-trigger" data-id="{{this._id}}" data-toggle="modal"
-                data-target="notemodal">ARTICLE
-                NOTES</a>
-            {{else}}
-            <a class="waves-effect waves-light btn" id="btn_save_article" data-id="{{this._id}}">SAVE ARTICLE</a>
-            {{/if}}
-
-            Summary:{{this.summary}}<br />
-            Byline:{{this.byline}}<br />
-            Image:<img src="{{this.image}}" width="112">
+            <div class=" col s12">
+            <h4 class="header"><a href=" {{this.link}}" target="_blank">{{this.headline}}</a></h4>
+            <div class="card horizontal">
+                <div class="card-image">
+                    <img src="
+                    {{#if this.image}}   
+                        {{this.image}}
+                    {{else}}
+                        /images/no_image.png
+                    {{/if}}
+                    " style="width:112px;">
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <p>
+                            {{#if this.summary }}
+                            {{this.summary }}
+                            {{else}}
+                            {{this.headline }}
+                            {{/if}}
+                        </p>
+                        <p>{{this.byline}}</p>
+                    </div>
+                    <div class="card-action">
+                        {{#if saved}}
+                        <a class="waves-effect waves-light btn orange modal-trigger" data-id="{{this._id}}"
+                            data-toggle="modal" data-target="notemodal">ARTICLE
+                            NOTES</a>
+                        {{else}}
+                        <a class="waves-effect waves-light btn" id="btn_save_article" data-id="{{this._id}}">SAVE
+                            ARTICLE</a>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
         </div>
-        {{/each}}
     </div>
+    {{/each}}
+</div>
 
-    <div id="notemodal" class="modal">
-        <div class="modal-content">
-            {{> note/note-block}}
+<div id="notemodal" class="modal">
+    <div class="modal-content">
+        {{> note/note-block}}
+    </div>
+</div>
+
+{{#unless contents}}
+<div class="no_article_container">
+    {{#if saved}}
+    <div class="alert alert-warning text-center">
+        <h4>Uh Oh. Looks like we don't have any saved articles.</h4>
+    </div>
+    <div class="card">
+        <div class="card-header text-center">
+            <h3>Would You Like to Browse Available Articles?</h3>
+        </div>
+        <div class="card-body text-center">
+            <h4>
+                <a href="/">Browse Articles</a>
+            </h4>
         </div>
     </div>
-
-    <div class="no_article_container">
-        {{#if saved}}
-        {{#unless contents}}
-        <div class="alert alert-warning text-center">
-            <h4>Uh Oh. Looks like we don't have any saved articles.</h4>
-        </div>
-        <div class="card">
-            <div class="card-header text-center">
-                <h3>Would You Like to Browse Available Articles?</h3>
-            </div>
-            <div class="card-body text-center">
-                <h4>
-                    <a href="/">Browse Articles</a>
-                </h4>
-            </div>
-        </div>
-        {{/unless}}
-        {{else}}
-        <div class="alert alert-warning text-center">
-            <h4>Uh Oh. Looks like we don't have any new articles.</h4>
-        </div>
-        <div class="card">
-            <div class="card-header text-center">
-                <h3>What Would You Like To Do?</h3>
-            </div>
-            <div class="card-body text-center">
-                <h4><a href="javascript:void(0);" class="scrape-new">Try Scraping New
-                        Articles</a></h4>
-                <h4><a href="/saved">Go to Saved Articles</a></h4>
-            </div>
-        </div>
-
-        {{/if}}
+    {{else}}
+    <div class="alert alert-warning text-center">
+        <h4>Uh Oh. Looks like we don't have any new articles.</h4>
     </div>
+    <div class="card">
+        <div class="card-header text-center">
+            <h3>What Would You Like To Do?</h3>
+        </div>
+        <div class="card-body text-center">
+            <h4><a href="javascript:void(0);" class="scrape-new">Try Scraping New
+                    Articles</a></h4>
+            <h4><a href="/saved">Go to Saved Articles</a></h4>
+        </div>
+    </div>
+    {{/if}}
+</div>
+{{/unless}}
 </div>

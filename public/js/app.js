@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    $('.sidenav').sidenav();
+    $(".dropdown-trigger").dropdown({ hover: false, coverTrigger: false });
     $('.modal').modal({
         onOpenStart: function (modal, trigger) {
             $(modal).find('#article_id').val($(trigger).data('id'));
@@ -16,7 +18,7 @@ $(document).ready(function () {
 });
 
 $(document).on("click", ".scrape-new", getArticles);
-$(document).on("click", "#btn_clear", clearArticles);
+$(document).on("click", "#clear-articles", clearArticles);
 $(document).on("click", "#btn_save_article", saveArticle);
 $(document).on("click", "#btn_save_note", saveNote);
 
