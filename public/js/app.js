@@ -19,7 +19,7 @@ $(document).ready(function () {
 
 $(document).on("click", ".scrape-new", getArticles);
 $(document).on("click", "#clear-articles", clearArticles);
-$(document).on("click", "#btn_save_article", saveArticle);
+$(document).on("click", ".btn_save_article", saveArticle);
 $(document).on("click", "#btn_save_note", saveNote);
 
 // Grab the articles as a json
@@ -36,7 +36,7 @@ function saveArticle() {
         method: "PUT",
         url: "/api/update/articles",
         data: {
-            saved: true,
+            saved: $(this).attr('data-saved'),
             _id: id
         }
     })
