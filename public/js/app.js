@@ -78,6 +78,6 @@ function clearArticles() {
     })
         .then(function (data) {
             $("#article_container").empty();
-            $("#no_article_container").show();
+            $(".no_article_container").show();
         });
 }
