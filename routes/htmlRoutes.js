@@ -3,12 +3,10 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", function (req, res) {
-    db.Article.find({ "saved": false }).then(function (err, dbArticle) {
-        if (err) throw err;
-        res.render("index", {
-            contents: dbArticle
-        });
+    res.render("index", {
+        contents: dbArticle
     });
+
 });
 
 router.get("/saved", function (req, res) {
