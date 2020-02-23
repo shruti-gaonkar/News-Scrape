@@ -3,7 +3,7 @@ var logger = require("morgan");
 var exphbs = require("express-handlebars");
 var mongoose = require("mongoose");
 
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 // Require all models
 var db = require("./models");
