@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", function (req, res) {
-    db.Article.find({ "saved": false }).lean().exec(function (err, dbArticle) {
+    db.Article.find({ "saved": false }).then(function (err, dbArticle) {
         if (err) throw err;
         res.render("index", {
             contents: dbArticle
