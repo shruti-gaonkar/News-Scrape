@@ -23,7 +23,9 @@
                             {{this.headline }}
                             {{/if}}
                         </p>
-                        <p>{{this.byline}}</p>
+                        {{#if this.byline}}
+                        <p style="font-style: italic;margin-top:8px;">{{this.byline}}</p>
+                        {{/if}}
                     </div>
                     <div class="card-action">
                         {{#if saved}}
