@@ -30,6 +30,7 @@ $(document).on("click", "#btn_save_note", saveNote);
 
 // Grab the articles as a json
 function getArticles() {
+    $(".overlay").show();
     $.getJSON("/scrape", function (data) {
     }).then(function () {
         window.location.reload();
